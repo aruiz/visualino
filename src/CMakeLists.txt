@@ -11,6 +11,8 @@ if (APPLE)
 endif ()
 
 set (CMAKE_AUTOMOC ON)
+set (CMAKE_AUTORCC ON)
+set (CMAKE_AUTOUIC ON)
 
 set ( visualino_SRCS
 	main.cpp
@@ -21,22 +23,13 @@ set ( visualino_SRCS
 	aboutdialog.cpp
 	)
 
-
-
-qt5_wrap_ui(
-	UIS
+add_executable (
+	visualino
+	Resources.qrc
 	mainwindow.ui
 	settingsdialog.ui
 	aboutdialog.ui
-	)
-
-qt5_add_resources(RSCS Resources.qrc)
-
-add_executable (
-	visualino
 	${visualino_SRCS}
-	${UIS}
-	${RSCS}
 	)
 
 target_link_libraries (
